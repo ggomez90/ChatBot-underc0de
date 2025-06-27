@@ -1,5 +1,8 @@
 import dotenv from 'dotenv';
 dotenv.config();
+console.log('JWT_TOKEN:', process.env.JWT_TOKEN);
+console.log('NUMBER_ID:', process.env.NUMBER_ID);
+console.log('VERIFY_TOKEN:', process.env.VERIFY_TOKEN);
 //import { join } from 'path'
 //import { createBot, createProvider, createFlow, addKeyword, utils } from '@builderbot/bot'
 
