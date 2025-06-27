@@ -3,10 +3,18 @@ dotenv.config();
 //import { join } from 'path'
 //import { createBot, createProvider, createFlow, addKeyword, utils } from '@builderbot/bot'
 
+
 import { BienvenidaFlow } from './flows/Bienvenida.flow.js'
 import { CursosFlow } from './flows/Cursos.flow.js'
-import { PracticaProfesionalFlow } from './flows/Practicas.flow.js'
 import { SaludoFlow } from './flows/Saludo.flow.js'
+import { FlowInicio } from './flows/Inicio.flow.js'
+import { PracticaProfesionalFlow, PracticaSolidariaFlow } from './flows/Practicas.flow.js'
+import { VoluntariadoFlow } from './flows/Voluntariado.flow.js'
+import { DocentesReferentesFlow } from './flows/Institucional.flow.js'
+import { StaffEventosCursosFlow } from './flows/Extras.flow.js'
+import { FAQFlow } from './flows/FAQ.flow.js'
+import { ConsultaLibreFlow } from './flows/ConsultaLibre.flow.js'
+import { ContactoFlow } from './flows/Contacto.flow.js'
 
 
 
@@ -17,7 +25,7 @@ import { MetaProvider as Provider } from '@builderbot/provider-meta'
 const PORT = process.env.PORT ?? 3008
 
 const main = async () => {
-    const adapterFlow = createFlow([BienvenidaFlow, CursosFlow, PracticaProfesionalFlow, SaludoFlow])
+    const adapterFlow = createFlow([BienvenidaFlow, CursosFlow, PracticaProfesionalFlow, SaludoFlow, FlowInicio,PracticaSolidariaFlow, VoluntariadoFlow, DocentesReferentesFlow, StaffEventosCursosFlow, FAQFlow, ConsultaLibreFlow, ContactoFlow])
     const adapterProvider = createProvider(Provider, {
         jwtToken: process.env.JWT_TOKEN,
         numberId: process.env.NUMBER_ID,
