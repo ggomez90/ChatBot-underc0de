@@ -5,7 +5,8 @@ dotenv.config();
 
 import { BienvenidaFlow } from './flows/Bienvenida.flow.js'
 import { CursosFlow } from './flows/Cursos.flow.js'
-
+import { PracticaProfesionalFlow } from './flows/Practicas.flow.js'
+import { SaludoFlow } from './flows/Saludo.flow.js'
 
 
 
@@ -16,7 +17,7 @@ import { MetaProvider as Provider } from '@builderbot/provider-meta'
 const PORT = process.env.PORT ?? 3008
 
 const main = async () => {
-    const adapterFlow = createFlow([BienvenidaFlow, CursosFlow])
+    const adapterFlow = createFlow([BienvenidaFlow, CursosFlow, PracticaProfesionalFlow, SaludoFlow])
     const adapterProvider = createProvider(Provider, {
         jwtToken: process.env.JWT_TOKEN,
         numberId: process.env.NUMBER_ID,
