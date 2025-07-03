@@ -9,19 +9,19 @@ export const FAQFlow = addKeyword(['faq', 'pregunta', 'frecuente', 'consulta', '
     .addAnswer(
     [
         '1️⃣ *¿Qué es la Fundación Underc0de?*',
-        '➡️ Underc0de nace en el año 2011 como un grupo de informáticos que buscaban compartir conocimientos y resolver dudas mediante un canal virtual, un foro. ',
+        'Underc0de nace en el año 2011 como un grupo de informáticos que buscaban compartir conocimientos y resolver dudas mediante un canal virtual, un foro. ',
 
         '2️⃣ *¿Puedo participar sin experiencia?*',
-        '➡️ ¡Sí! Tenemos mentorías y espacios para todos los niveles.',
+        '¡Sí! Tenemos mentorías y espacios para todos los niveles.',
 
         '3️⃣ *¿Entregan certificados?*',
-        '➡️ Sí, se entregan certificados por participación o prácticas.',
+        'Sí, se entregan certificados por participación o prácticas.',
 
         '4️⃣ *¿Las actividades son virtuales o presenciales?*',
-        '➡️ Tenemos ambas modalidades, dependerá de la modalidad específica de cada curso/capacitación/taller/encuentro',
+        'Tenemos ambas modalidades, dependerá de la modalidad específica de cada curso/capacitación/taller/encuentro',
 
         '5️⃣ *¿Cómo me postulo?*',
-        '➡️ Completando este formulario: https://fundacion.underc0de.org/formulario'
+        'Completando este formulario: https://fundacion.underc0de.org/formulario'
     ])
     .addAnswer('¿Querés volver al menú o contactarte con nosotros?', {
         buttons: [

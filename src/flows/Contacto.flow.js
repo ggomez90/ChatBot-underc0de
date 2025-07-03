@@ -9,7 +9,7 @@ export const ContactoFlow = addKeyword(['hablar', 'contacto', 'contactarme', 'co
     .addAnswer('🌎 Ubicación: Corrientes 122 (Mendoza ciudad)')
     .addAnswer('📧 E-mail institucional: info@underc0de.org')
     .addAnswer('📱 Contacto vía WhatsApp: +1-613-555-0103')
-    .addAnswer('Tambiíen puedes ingresar a https://fundacion.underc0de.org/contacto/ y completar nuestro formulario de contacto, te responderemos a la brevedad.')
+    .addAnswer('Tambíen puedes ingresar a https://fundacion.underc0de.org/contacto/ y completar nuestro formulario de contacto, te responderemos a la brevedad.')
     .addAnswer('¿Te puedo ayudar en algo más?', {
         buttons: [
             { body: 'FAQ' },
