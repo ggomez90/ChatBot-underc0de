@@ -2,6 +2,8 @@ import { addKeyword } from '@builderbot/bot'
 import { FAQFlow } from './FAQ.flow.js'
 import { ContactoFlow } from './Contacto.flow.js'
 import { BienvenidaFlow } from './Bienvenida.flow.js'
+import { DesconocidoFlow } from './Desconocido.flow.js'
+import { KEYWORDS_VALIDOS } from '../palabras_validas.js'
 
 export const StaffEventosCursosFlow = addKeyword(['staff', 'unirme', 'equipo', 'eventos', 'cursos', 'talleres', 'evento', 'taller'])
     .addAnswer('📌 Si querés unirte al staff, ¡escribinos!')
@@ -16,8 +18,11 @@ export const StaffEventosCursosFlow = addKeyword(['staff', 'unirme', 'equipo', '
     })
 
     .addAction(async (ctx, { gotoFlow }) => {
-        const body = ctx.body?.toLowerCase()
-        if (body.includes('faq')) return gotoFlow(FAQFlow)
-        if (body.includes('persona')) return gotoFlow(ContactoFlow)
-        if (body.includes('inicio')) return gotoFlow(BienvenidaFlow)
+        const msg = ctx.body?.toLowerCase()
+        if (!KEYWORDS_VALIDOS.includes(msg)) {
+            return gotoFlow(DesconocidoFlow)
+        }
+        if (msg.includes('faq')) return gotoFlow(FAQFlow)
+        if (msg.includes('persona')) return gotoFlow(ContactoFlow)
+        if (msg.includes('inicio')) return gotoFlow(BienvenidaFlow)
     })

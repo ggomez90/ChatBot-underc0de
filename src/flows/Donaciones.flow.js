@@ -1,15 +1,15 @@
 import { addKeyword } from '@builderbot/bot'
+import { FlowInicio } from './Inicio.flow.js'
 import { FAQFlow } from './FAQ.flow.js'
 import { ContactoFlow } from './Contacto.flow.js'
-import { FlowInicio } from './Inicio.flow.js'
 import { DesconocidoFlow } from './Desconocido.flow.js'
 import { KEYWORDS_VALIDOS } from '../palabras_validas.js'
 
-export const InstitucionalFlow = addKeyword(['nosotros', 'sobre nosotros', 'institucion', 'institución', 'que es', 'institucional', 'fundacion','fundación'])
-    .addAnswer('🦑 ¿Qué es Underc0de?')
-    .addAnswer('Underc0de nace en el año 2011 como un grupo de informáticos que buscaban compartir conocimientos.')
-    .addAnswer('El objetivo principal era resolver dudas mediante un canal virtual: un foro.')
-    .addAnswer('Con el tiempo, la comunidad creció hasta constituirse en un grupo gigante el cual te invito a visitar nuestra sección https://fundacion.underc0de.org/nosotros/')
+export const DonacionesFlow = addKeyword(['donacion', 'donar','donaciones','donación','ayudar','ayuda','colaborar','colaboración','donativo',
+    'ofrenda','limosna','cooperar','cooperación', 'contribuir', 'contribución', 'aportar', 'aporte'])
+    .addAnswer('💰 ¿Por qué donar?​')
+    .addAnswer('Tu apoyo nos permite mantener nuestros programas educativos y ayudar a más personas de nuestra comunidad a encontrar empleo.')
+    .addAnswer('Te invito a que puedas conocer las formas en las que puedas ayudar a nuestra fundación: https://fundacion.underc0de.org/donaciones/​')
     .addAnswer('¿Te puedo ayudar en algo más?', {
         buttons: [
             { body: 'FAQ' },
@@ -18,6 +18,7 @@ export const InstitucionalFlow = addKeyword(['nosotros', 'sobre nosotros', 'inst
         ],
         capture: true
     })
+
     .addAction(async (ctx, { gotoFlow }) => {
         const msg = ctx.body?.toLowerCase()
         if (msg.includes('faq')) return gotoFlow(FAQFlow)
@@ -27,4 +28,3 @@ export const InstitucionalFlow = addKeyword(['nosotros', 'sobre nosotros', 'inst
             return gotoFlow(DesconocidoFlow)
         }
     })
-

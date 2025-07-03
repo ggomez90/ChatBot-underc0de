@@ -1,17 +1,28 @@
 import { addKeyword } from '@builderbot/bot'
-import { BienvenidaFlow } from './Bienvenida.flow.js'
+import { FlowInicio} from './Inicio.flow.js'
+import { FAQFlow } from './FAQ.flow.js'
+import { DesconocidoFlow } from './Desconocido.flow.js'
+import { KEYWORDS_VALIDOS } from '../palabras_validas.js'
 
-export const ContactoFlow = addKeyword(['hablar con una persona', 'contacto', 'comunicarme', 'hablar con', 'persona'])
-    .addAnswer('Podés escribirnos directamente a contacto@underc0de.org o al WhatsApp +54 9 11 1234-5678.')
-    .addAnswer('¿Querés volver al menú principal?', {
+export const ContactoFlow = addKeyword(['hablar', 'contacto', 'contactarme', 'comunicarme', 'hablar con', 'persona', 'mail', 'ubicacion', 'ubicación', 'atención', 'atencion', 'canal'])
+    .addAnswer('¿Deseas atención personalizada? Te listaré nuestros canales de contacto:')
+    .addAnswer('🌎 Ubicación: Corrientes 122 (Mendoza ciudad)')
+    .addAnswer('📧 E-mail institucional: info@underc0de.org')
+    .addAnswer('📱 Contacto vía WhatsApp: +1-613-555-0103')
+    .addAnswer('Tambiíen puedes ingresar a https://fundacion.underc0de.org/contacto/ y completar nuestro formulario de contacto, te responderemos a la brevedad.')
+    .addAnswer('¿Te puedo ayudar en algo más?', {
         buttons: [
-            { body: 'Volver al inicio' }
+            { body: 'FAQ' },
+            { body: 'INICIO' }
         ],
         capture: true
     })
-
-    .addAction(async (ctx, { gotoFlow }) => {
+    
+    .addAction(async (ctx, { gotoFlow}) => {
         const msg = ctx.body?.toLowerCase()
-        if (msg?.includes('inicio')) return gotoFlow(BienvenidaFlow)
+        if (msg.includes('faq')) return gotoFlow(FAQFlow)
+        if (msg.includes('inici')) return gotoFlow(FlowInicio)
+        if (!KEYWORDS_VALIDOS.includes(msg)) {
+            return gotoFlow(DesconocidoFlow)
+        }
     })
-

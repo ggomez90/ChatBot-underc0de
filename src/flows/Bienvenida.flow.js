@@ -1,5 +1,7 @@
 import { addKeyword } from '@builderbot/bot'
 import { FlowInicio } from './Inicio.flow.js'
+import { DesconocidoFlow } from './Desconocido.flow.js'
+import { KEYWORDS_VALIDOS } from '../palabras_validas.js'
 
 export const BienvenidaFlow = addKeyword(['hi', 'hello', 'hola', 'buen', 'buenos', 'buenas', 'dias', 'dia', 'días', 'día', 'tarde', 'tardes','noche', 'noches'])
     .addAnswer(`🙌 Hola, bienvenido a fundación underc0de*`)
@@ -9,12 +11,10 @@ export const BienvenidaFlow = addKeyword(['hi', 'hello', 'hola', 'buen', 'buenos
         capture: true
     })
 
-    .addAction(async (ctx, { gotoFlow, endFlow }) => {
+    .addAction(async (ctx, { gotoFlow }) => {
         const msg = ctx.body?.trim().toLowerCase()
-        console.log('Respuesta BIENVENIDA FLOW: ', msg)
-
-        if (msg === 'inicio') {
-            return gotoFlow(FlowInicio)
+        if (msg?.includes('inici')) return gotoFlow(FlowInicio)
+        if (!KEYWORDS_VALIDOS.includes(msg)) {
+            return gotoFlow(DesconocidoFlow)
         }
-        return endFlow()
     })
